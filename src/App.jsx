@@ -1,7 +1,6 @@
 import useLocalStorageState from 'use-local-storage-state';
 import { useState } from 'react';
 import { QRCodeSVG } from 'qrcode.react';
-
 import './App.css';
 import logo from './assets/logo.jpg';
 
@@ -63,14 +62,10 @@ function App() {
                 placeholder="Type your wi-fi network name"
                 className="form-control"
                 id="exampleInputEmail1"
-                // aria-describedby="emailHelp"
                 required
                 value={wifiSSID}
                 onChange={(e) => setWifiSSID(e.target.value)}
               />
-              {/* <div id="emailHelp" className="form-text">
-                We'll never share your email with anyone else.
-              </div> */}
             </div>
             <div className="mb-3">
               <label htmlFor="exampleInputPassword1" className="form-label">

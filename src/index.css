@@ -31,10 +31,8 @@
 }
 
 body {
-  /* background-color: #f1f1f1; */
   background: #f1f1f1 url(./assets/bg.jpg) fixed center center / cover no-repeat;
   color: rgba(35, 35, 35, 0.85);
-  /* font-family: Arial, Helvetica, sans-serif; */
 }
 h1 {
   /* font: var(--h1-font); */
