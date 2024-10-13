@@ -35,7 +35,7 @@ function App() {
     <>
       {/* <div className="p-5 mt-5">TEST Bootstrap...</div> */}
       {/* ----------- Header -----------*/}
-      <header className="container-fluid py-3 rounded-bottom-3 shadow">
+      <header className="container-fluid py-2 rounded-bottom-3 shadow">
         <h1 className="p-3 text-center text-md-start ">Chicalastiic</h1>
       </header>
       {/* ----------- Banner for the App -----------*/}
