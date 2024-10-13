@@ -15,13 +15,21 @@ function App() {
   const [encryptionType, setEncryptionType] = useState('WPA');
   const [hidden, setHidden] = useState(false);
 
-  const [wifiQRCodeValue, setWifiQRCodeValue] = useState('');
+  const [wifiQRCodeValue, setWifiQRCodeValue] = useLocalStorageState('wifiQrVal', {
+    defaultValue: '',
+  });
+  const [done, setDone] = useState(false);
+
+  setTimeout(() => {
+    !done ? done : setDone(false);
+  }, 2500);
 
   // console.log(hidden);
 
   function submitHandler(e) {
     e.preventDefault();
     setWifiQRCodeValue(`WIFI:T:${encryptionType};S:${wifiSSID};P:${wifiPassword};H:${hidden};`);
+    setDone(true);
   }
 
   return (
@@ -52,7 +60,6 @@ function App() {
               </label>
               <input
                 type="text"
-                name="wifissid"
                 placeholder="Type your wi-fi network name"
                 className="form-control"
                 id="exampleInputEmail1"
@@ -111,6 +118,12 @@ function App() {
             <button type="submit" className="btn submit-btn" onClick={submitHandler}>
               Create
             </button>
+            <p
+              className={`mt-2 ${!done ? 'd-none' : 'd-block'}`}
+              style={{ color: 'rgba(0 ,0 ,0 ,0.45)' }}
+            >
+              Done with success, scan now!
+            </p>
           </form>
           {/* QR - IMAGE */}
           <div className="col-md-4 col-12 text-center mt-3">
