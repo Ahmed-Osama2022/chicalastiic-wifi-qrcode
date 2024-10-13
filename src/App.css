@@ -1,0 +1,27 @@
+/*  */
+.img-wrapper {
+  /* border-radius: 50%; */
+  overflow: hidden;
+}
+.img-wrapper img {
+  border-radius: 50%;
+}
+input {
+  max-width: 480px;
+  background-color: #f0f0f0 !important;
+  border: none !important;
+}
+input:focus {
+  /* box-shadow:  0 0 0 .25rem rgba(13, 110, 253, .25); */
+  box-shadow: 0 0 0 0.15rem #e585a3 !important;
+}
+.submit-btn {
+  background-color: #e585a3 !important;
+  border: none !important;
+}
+
+.submit-btn:hover,
+.submit-btn:focus,
+.submit-btn:active {
+  background-color: #fd00b1 !important;
+}
