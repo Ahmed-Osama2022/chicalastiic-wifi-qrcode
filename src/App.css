@@ -39,3 +39,6 @@ input:focus,
 .submit-btn:active {
   background-color: #f1b1c1 !important;
 }
+.submit-btn:active {
+  transform: scale(0.9);
+}

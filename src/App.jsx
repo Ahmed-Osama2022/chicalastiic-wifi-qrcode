@@ -1,19 +1,29 @@
+import useLocalStorageState from 'use-local-storage-state';
 import { useState } from 'react';
-// import QRCode from 'qrcode.react';
 import { QRCodeSVG } from 'qrcode.react';
 
 import './App.css';
 import logo from './assets/logo.jpg';
 
 function App() {
-  const [wifiSSID, setWifiSSID] = useState('');
-  const [wifiPassword, setWifiPassword] = useState('');
+  const [wifiSSID, setWifiSSID] = useLocalStorageState('wifiSSID', {
+    defaultValue: '',
+  });
+  const [wifiPassword, setWifiPassword] = useLocalStorageState('wifiPASS', {
+    defaultValue: '',
+  });
   const [encryptionType, setEncryptionType] = useState('WPA');
   const [hidden, setHidden] = useState(false);
 
-  const [value, setValue] = useState('');
+  const [wifiQRCodeValue, setWifiQRCodeValue] = useState('');
 
-  const wifiQRCodeValue = `WIFI:T:${encryptionType};S:${wifiSSID};P:${wifiPassword};H:${hidden};`;
+  // console.log(hidden);
+
+  function submitHandler(e) {
+    e.preventDefault();
+    setWifiQRCodeValue(`WIFI:T:${encryptionType};S:${wifiSSID};P:${wifiPassword};H:${hidden};`);
+  }
+
   return (
     <>
       {/* <div className="p-5 mt-5">TEST Bootstrap...</div> */}
@@ -42,12 +52,14 @@ function App() {
               </label>
               <input
                 type="text"
-                name="name"
+                name="wifissid"
                 placeholder="Type your wi-fi network name"
                 className="form-control"
                 id="exampleInputEmail1"
-                aria-describedby="emailHelp"
-                onChange={(e) => setValue(e.target.value)}
+                // aria-describedby="emailHelp"
+                required
+                value={wifiSSID}
+                onChange={(e) => setWifiSSID(e.target.value)}
               />
               {/* <div id="emailHelp" className="form-text">
                 We'll never share your email with anyone else.
@@ -62,12 +74,20 @@ function App() {
                 className="form-control"
                 id="exampleInputPassword1"
                 placeholder="Type your wi-fi network password"
+                value={wifiPassword}
+                required
+                onChange={(e) => setWifiPassword(e.target.value)}
               />
             </div>
 
             <div className="mb-3">
               <p className="">Select your password encryption type:</p>
-              <select className="form-select" aria-label="Default select example">
+              <select
+                value={encryptionType}
+                onChange={(e) => setEncryptionType(e.target.value)}
+                className="form-select"
+                aria-label="Default select example"
+              >
                 <option value="WPA" selected>
                   WPA/WPA2
                 </option>
@@ -77,12 +97,18 @@ function App() {
             </div>
 
             <div className="mb-3 form-check">
-              <input type="checkbox" className="form-check-input" id="exampleCheck1" />
+              <input
+                type="checkbox"
+                className="form-check-input"
+                id="exampleCheck1"
+                checked={hidden}
+                onChange={(e) => setHidden(e.target.checked)}
+              />
               <label className="form-check-label" htmlFor="exampleCheck1">
                 Hidden Network
               </label>
             </div>
-            <button type="submit" className="btn submit-btn">
+            <button type="submit" className="btn submit-btn" onClick={submitHandler}>
               Create
             </button>
           </form>
@@ -92,7 +118,7 @@ function App() {
             <div className="img-wrapper m-auto">
               {/* <img src={logo} className="img-fluid m-auto" alt="Logo" /> */}
               <QRCodeSVG
-                value={value}
+                value={wifiQRCodeValue}
                 title={'WI-FI QR-Code Network'}
                 size={140}
                 bgColor={'#f1f1f1'}
