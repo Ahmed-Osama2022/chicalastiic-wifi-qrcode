@@ -57,7 +57,9 @@ function App() {
       {/* <div className="p-5 mt-5">TEST Bootstrap...</div> */}
       {/* ----------- Header -----------*/}
       <header className="container-fluid py-2 rounded-bottom-3 shadow">
-        <h1 className="p-3 text-center text-md-start ">Chicalastiic</h1>
+        <h1 className="p-3 text-center text-md-start d-flex justify-content-between align-items-center">
+          Chicalastic <span className="fw-normal separator">||</span> <span>شيكالاستيك</span>
+        </h1>
       </header>
       {/* ----------- Banner for the App -----------*/}
       <main className="container-sm banner shadow rounded-3 mt-4 p-3">

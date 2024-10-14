@@ -29,6 +29,35 @@
   font-weight: 700; /* Bold */
   font-style: normal;
 }
+/* ================== ARABIC-FONT ================== */
+@font-face {
+  font-family: 'NotoNaskhArabic';
+  src: url('./assets/arabic-font/static/NotoNaskhArabic-Regular.ttf') format('truetype');
+  font-weight: 400; /* Regular */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NotoNaskhArabic';
+  src: url('./assets/arabic-font/static/NotoNaskhArabic-Medium.ttf') format('truetype');
+  font-weight: 500; /* Medium */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NotoNaskhArabic';
+  src: url('./assets/arabic-font/static/NotoNaskhArabic-SemiBold.ttf') format('truetype');
+  font-weight: 600; /* Semi-Bold */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NotoNaskhArabic';
+  src: url('./assets/arabic-font/static/NotoNaskhArabic-Bold.ttf') format('truetype');
+  font-weight: 700; /* Bold */
+  font-style: normal;
+}
+/* ================ END ARABIC-FONT ================ */
 
 body {
   background: #f1f1f1 url(./assets/bg.jpg) fixed center center / cover no-repeat;

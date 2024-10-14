@@ -1,3 +1,12 @@
+h1 span {
+  font-family: 'NotoNaskhArabic';
+  font-weight: bold;
+  font-style: italic;
+}
+.separator {
+  font-style: unset;
+}
+
 .img-wrapper {
   overflow: hidden;
 }
