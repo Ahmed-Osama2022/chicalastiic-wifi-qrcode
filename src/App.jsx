@@ -21,7 +21,7 @@ function App() {
 
   setTimeout(() => {
     !done ? done : setDone(false);
-  }, 2500);
+  }, 3500);
 
   // console.log(hidden);
 
