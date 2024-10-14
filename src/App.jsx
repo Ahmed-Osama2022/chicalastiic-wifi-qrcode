@@ -1,24 +1,38 @@
 import useLocalStorageState from 'use-local-storage-state';
 import { useState } from 'react';
 import { QRCodeSVG } from 'qrcode.react';
+import { IoMdEye } from 'react-icons/io';
+import { IoMdEyeOff } from 'react-icons/io';
 import './App.css';
 import logo from './assets/logo.jpg';
 
 function App() {
+  /**
+   * States
+   */
   const [wifiSSID, setWifiSSID] = useLocalStorageState('wifiSSID', {
     defaultValue: '',
   });
+
   const [wifiPassword, setWifiPassword] = useLocalStorageState('wifiPASS', {
     defaultValue: '',
   });
   const [encryptionType, setEncryptionType] = useState('WPA');
-  const [hidden, setHidden] = useState(false);
 
   const [wifiQRCodeValue, setWifiQRCodeValue] = useLocalStorageState('wifiQrVal', {
     defaultValue: '',
   });
-  const [done, setDone] = useState(false);
 
+  const [hidden, setHidden] = useState(false);
+  const [done, setDone] = useState(false);
+  const [showPass, setShowPass] = useState(false);
+  /**
+   * End States
+   */
+
+  /**
+   * Helper functions
+   */
   setTimeout(() => {
     !done ? done : setDone(false);
   }, 3500);
@@ -30,7 +44,14 @@ function App() {
     setWifiQRCodeValue(`WIFI:T:${encryptionType};S:${wifiSSID};P:${wifiPassword};H:${hidden};`);
     setDone(true);
   }
+  function toggleShowHandler() {
+    !showPass ? setShowPass(true) : setShowPass(false);
+  }
+  console.log(showPass);
 
+  /**
+   * End Helper functions
+   */
   return (
     <>
       {/* <div className="p-5 mt-5">TEST Bootstrap...</div> */}
@@ -71,16 +92,40 @@ function App() {
               <label htmlFor="exampleInputPassword1" className="form-label">
                 WI-FI Password:
               </label>
-              <input
-                type="password"
-                className="form-control"
-                id="exampleInputPassword1"
-                placeholder="Type your wi-fi network password"
-                value={wifiPassword}
-                required
-                onChange={(e) => setWifiPassword(e.target.value)}
-              />
+
+              <div className="input-group">
+                <input
+                  type={!showPass ? 'password' : 'text'}
+                  className="form-control position-relative rounded"
+                  // id="exampleInputPassword1"
+                  placeholder="Type your wi-fi network password"
+                  value={wifiPassword}
+                  required
+                  onChange={(e) => setWifiPassword(e.target.value)}
+                />
+
+                {!showPass ? (
+                  <span
+                    className={`toggle-password rounded-pill`}
+                    aria-label="Show password as plain text"
+                    onClick={toggleShowHandler}
+                  >
+                    <IoMdEye className="fs-5" />
+                  </span>
+                ) : (
+                  <span
+                    className={`toggle-password rounded-pill`}
+                    aria-label="Hide password"
+                    onClick={toggleShowHandler}
+                  >
+                    <IoMdEyeOff className="fs-5" />
+                  </span>
+                )}
+              </div>
             </div>
+
+            {/* <button type="button" className="d-inline-block" onClick={() => !showPass}>
+            </button> */}
 
             <div className="mb-3">
               <p className="">Select your password encryption type:</p>

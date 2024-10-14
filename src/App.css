@@ -35,3 +35,24 @@ input:focus,
 .submit-btn:active {
   transform: scale(0.9);
 }
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+
+  /* Me */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* .input-group span {
+  cursor: pointer !important;
+} */
+.input-group {
+  max-width: 480px;
+}
