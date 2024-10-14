@@ -97,7 +97,7 @@ function App() {
                 <input
                   type={!showPass ? 'password' : 'text'}
                   className="form-control position-relative rounded"
-                  // id="exampleInputPassword1"
+                  id="exampleInputPassword1"
                   placeholder="Type your wi-fi network password"
                   value={wifiPassword}
                   required
@@ -123,9 +123,6 @@ function App() {
                 )}
               </div>
             </div>
-
-            {/* <button type="button" className="d-inline-block" onClick={() => !showPass}>
-            </button> */}
 
             <div className="mb-3">
               <p className="">Select your password encryption type:</p>
@@ -193,8 +190,6 @@ function App() {
         </div>
       </main>
 
-      <br />
-      <br />
       <br />
       <br />
     </>
