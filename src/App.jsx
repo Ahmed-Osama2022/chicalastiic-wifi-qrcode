@@ -84,7 +84,7 @@ function App() {
                 type="text"
                 placeholder="Type your wi-fi network name"
                 className="form-control"
-                id="exampleInputEmail1"
+                // id="exampleInputEmail1"
                 required
                 value={wifiSSID}
                 onChange={(e) => setWifiSSID(e.target.value)}
